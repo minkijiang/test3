@@ -79,7 +79,8 @@ float getMemoryUsage() {
 }
 
 int main() {
-	getMaxMemory();
+	printf("%f", getMaxMemory());
+
 	return 0;
 }
 
