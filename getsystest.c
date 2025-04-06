@@ -1,3 +1,15 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <stdbool.h>
+#include <time.h>
+#include <unistd.h>
+
+#define KB_TO_GB 1000
+#define MAXLENGTH 1024
+
 float getMaxMemory() {
 
 
