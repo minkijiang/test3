@@ -124,7 +124,7 @@ int* getCore(FILE* corefile) {
 	char word[MAXLENGTH];
 	char line[MAXLENGTH];
 
-	while (phy_id != NOTHING || core_id != NOTHING ) {
+	while (phy_id == NOTHING || core_id == NOTHING ) {
 		if (fgets(line, (MAXLENGTH-1)*sizeof(char), corefile) != NULL) {
 			return NULL;
 		}
@@ -187,12 +187,16 @@ int getCoreAmount() {
 
 
 int main() {
-	//printf("\n%d\n", getCoreAmount());
+	printf("\n%d\n", getCoreAmount());
+
+	/*
 
 	FILE* corefile = fopen("/proc/cpuinfo", "r");
 
 	int* v = getCore(corefile);
 	printf("%d", v[0]);
+
+	*/
 
 	return 0;
 }
