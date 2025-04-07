@@ -187,7 +187,11 @@ int getCoreAmount() {
 
 
 int main() {
-	printf("\n%d\n", getCoreAmount());
+	//printf("\n%d\n", getCoreAmount());
+
+	FILE* corefile = fopen("/proc/cpuinfo", "r");
+
+	getCore(corefile);
 
 	return 0;
 }
