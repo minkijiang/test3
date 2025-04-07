@@ -99,11 +99,11 @@ void plotgraph(GRAPHINFO* graphinfo, int currentsample, float value, float maxva
 			int y0 = graphinfo->startheight;
 			y0 += (ROWAMOUNT - ceil(( graphinfo->values[currentsample-2] / maxvalue)*maxvalue));
 
-			if (graphinfo->values[currentsample-2] > value) {
+			if (y0 > y) {
 				removechar(x-1, y0);
 				printchar(x-1, y0+1, DESC);
 			}
-			else if (graphinfo->values[currentsample-2] < value) {
+			else if (y0 < y) {
 				printf("%c", ASC);
 				printchar(x-1, y0, ASC);
 			}

@@ -117,7 +117,7 @@ void retrieveCpuInfo(CPUINFO* cpuinfo, int currentsample, int fd) {
 	float percent = ((runtime-idletime) / runtime)*100;
 
 	cpuinfo->cpu_usage = percent;
-	//cpuinfo->cpugraphinfo->values[currentsample-1] = percent;
+	cpuinfo->cpugraphinfo->values[currentsample-1] = percent;
 	cpuinfo->avg_usage = ((cpuinfo->avg_usage * (currentsample-1)) + percent) / currentsample;
 }
 
