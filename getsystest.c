@@ -132,7 +132,6 @@ int* getCore(FILE* corefile) {
 		}
 
 		sscanf(line, "%s %s : %d", word, word2, &value);
-		printf("%s    %s    %d\n", word, word2, value);
 
 		if (strcmp(word, "physical") == 0 && strcmp(word2, "id") == 0) {
 			phy_id = value;
@@ -141,6 +140,8 @@ int* getCore(FILE* corefile) {
 			core_id = value;
 		}
 	}
+
+	printf("%d   %d\n", phy_id, core_id);
 
 	int* values = malloc(2*sizeof(int));
 	values[0] = phy_id;
