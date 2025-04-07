@@ -122,6 +122,7 @@ int* getCore(FILE* corefile) {
 	int core_id = NOTHING;
 
 	char word[MAXLENGTH];
+	char word2[MAXLENGTH];
 	char line[MAXLENGTH];
 
 
@@ -131,11 +132,12 @@ int* getCore(FILE* corefile) {
 			return NULL;
 		}
 		printf("%s", line);
-		sscanf(line, "%s: %d", word, &value);
-		if (strcmp(word, "physical id") == 0) {
+
+		sscanf(line, "%s %s : %d", word, word2, &value);
+		if (strcmp(word, "physical") == 0 && strcmp(word2, "id") == 0) {
 			phy_id = value;
 		}
-		else if (strcmp(word, "core id") == 0) {
+		else if (strcmp(word, "core") == 0 && strcmp(word2, "id") == 0) {
 			core_id = value;
 		}
 	}
