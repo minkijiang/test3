@@ -188,7 +188,13 @@ int getCoreAmount() {
 		exit(1);
 	}
 
+	for (CORES* core = cores; core != NULL; core = core->next) {
+		printf("%d    %d\n", core->phy_id, core->core_id);
+	}
+
 	freeCores(cores);
+
+
 
 	return coreamount;
 }
