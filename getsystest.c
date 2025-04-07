@@ -146,6 +146,8 @@ int* getCore(FILE* corefile) {
 		}
 	}
 
+	printf("%d         %d\n", phy_id, core_id);
+
 	int* values = malloc(2*sizeof(int));
 	values[0] = phy_id;
 	values[1] = core_id;
@@ -188,6 +190,7 @@ int getCoreAmount() {
 		exit(1);
 	}
 
+	printf("\n\n\n");
 	for (CORES* core = cores; core != NULL; core = core->next) {
 		printf("%d    %d\n", core->phy_id, core->core_id);
 	}
