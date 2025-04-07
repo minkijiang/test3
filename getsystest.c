@@ -103,7 +103,7 @@ CORES* addCore(CORES* cores, int phy_id, int core_id) {
 	newcore->core_id = core_id;
 	newcore->next = cores;
 
-	return cores;
+	return newcore;
 }
 
 bool coreExists(CORES* cores, int phy_id, int core_id) {
@@ -166,7 +166,6 @@ int getCoreAmount() {
 		int phy_id = values[0];
 		int core_id = values[1];
 		if (!coreExists(cores, phy_id, core_id)) {
-			printf("ggg");
 			cores = addCore(cores, phy_id, core_id);
 		}
 		free(values);
@@ -193,15 +192,6 @@ int getCoreAmount() {
 
 int main() {
 	printf("\n%d\n", getCoreAmount());
-
-	/*
-
-	FILE* corefile = fopen("/proc/cpuinfo", "r");
-
-	int* v = getCore(corefile);
-	printf("%d", v[0]);
-
-	*/
 
 	return 0;
 }
