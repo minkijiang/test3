@@ -124,12 +124,13 @@ int* getCore(FILE* corefile) {
 	char word[MAXLENGTH];
 	char line[MAXLENGTH];
 
-	printf("hi\n");
 
 	while (phy_id == NOTHING || core_id == NOTHING ) {
 		if (fgets(line, (MAXLENGTH-1)*sizeof(char), corefile) == NULL) {
+			printf("%s", line);
 			return NULL;
 		}
+		printf("%s", line);
 		sscanf(line, "%s: %d", word, &value);
 		if (strcmp(word, "physical id") == 0) {
 			phy_id = value;
