@@ -7,7 +7,7 @@
 #include <time.h>
 #include <unistd.h>
 
-#define KB_TO_GB 1000
+#define KB_TO_GB 1000000
 #define MAXLENGTH 1024
 
 float getMaxMemory() {
@@ -78,8 +78,10 @@ float getMemoryUsage() {
 
 }
 
+
+
 int main() {
-	printf("%f", getMaxMemory());
+	printf("%.2f", getMaxMemory());
 
 	return 0;
 }
