@@ -132,7 +132,7 @@ int* getCore(FILE* corefile) {
 		}
 
 		sscanf(line, "%s %s : %d", word, word2, &value);
-		printf("%s    %s\n", word, word2);
+		printf("%s    %s    %d      %d\n", word, word2, strcmp(word, "physical"), strcmp(word2, "id"));
 
 		if (strcmp(word, "physical") == 0 && strcmp(word2, "id") == 0) {
 			phy_id = value;
