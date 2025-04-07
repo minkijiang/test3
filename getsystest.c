@@ -125,7 +125,7 @@ int* getCore(FILE* corefile) {
 	char line[MAXLENGTH];
 
 	while (phy_id == NOTHING || core_id == NOTHING ) {
-		if (fgets(line, (MAXLENGTH-1)*sizeof(char), corefile) != NULL) {
+		if (fgets(line, (MAXLENGTH-1)*sizeof(char), corefile) == NULL) {
 			return NULL;
 		}
 		sscanf(line, "%s: %d", word, &value);
