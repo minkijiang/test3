@@ -191,7 +191,8 @@ int main() {
 
 	FILE* corefile = fopen("/proc/cpuinfo", "r");
 
-	getCore(corefile);
+	int* v = getCore(corefile);
+	printf("%d", v[0]);
 
 	return 0;
 }
