@@ -124,7 +124,7 @@ int* getCore(FILE* corefile) {
 	char word[MAXLENGTH];
 	char line[MAXLENGTH];
 
-	while (phy_id != NOTHING || core_id == NOTHING ) {
+	while (phy_id != NOTHING || core_id != NOTHING ) {
 		if (fgets(line, (MAXLENGTH-1)*sizeof(char), corefile) != NULL) {
 			return NULL;
 		}
