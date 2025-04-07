@@ -81,7 +81,8 @@ float getMemoryUsage() {
 
 
 int main() {
-	printf("%.2f", getMaxMemory());
+	printf("%.2f\n", getMaxMemory());
+	printf("%.2f\n", getMemoryUsage());
 
 	return 0;
 }
