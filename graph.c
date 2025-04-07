@@ -97,7 +97,7 @@ void plotgraph(GRAPHINFO* graphinfo, int currentsample, float value, float maxva
 
 		if (currentsample > 1) {
 			int y0 = graphinfo->startheight;
-			y0 += (ROWAMOUNT - ceil(( graphinfo->values[currentsample-2] /maxvalue)*maxvalue));
+			y0 += (ROWAMOUNT - ceil(( graphinfo->values[currentsample-2] / maxvalue)*maxvalue));
 
 			if (graphinfo->values[currentsample-2] > value) {
 				removechar(x-1, y0);

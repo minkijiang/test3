@@ -124,7 +124,7 @@ void retrieveMemoryInfo(MEMINFO* meminfo, int currentsample, int fd) {
 	}
 
 	meminfo->mem_usage = memusage;
-	//meminfo->memgraphinfo->values[currentsample-1] = memusage;
+	meminfo->memgraphinfo->values[currentsample-1] = memusage;
 	meminfo->avg_usage = ((meminfo->avg_usage * (currentsample-1)) + memusage) / currentsample;
 }
 
