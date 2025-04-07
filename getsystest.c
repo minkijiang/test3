@@ -141,8 +141,6 @@ int* getCore(FILE* corefile) {
 		}
 	}
 
-	printf("%d   %d\n", phy_id, core_id);
-
 	int* values = malloc(2*sizeof(int));
 	values[0] = phy_id;
 	values[1] = core_id;
@@ -168,6 +166,7 @@ int getCoreAmount() {
 		int phy_id = values[0];
 		int core_id = values[1];
 		if (!coreExists(cores, phy_id, core_id)) {
+			printf("ggg");
 			cores = addCore(cores, phy_id, core_id);
 		}
 		free(values);
