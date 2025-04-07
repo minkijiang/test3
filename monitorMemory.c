@@ -5,6 +5,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include <sys/wait.h>
 
 
 #define KB_TO_GB 1000000
