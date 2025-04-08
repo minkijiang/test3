@@ -105,11 +105,6 @@ void printsummary(int mempipe, int cpupipe, int corepipe) {
 
 int main(int argc, char** argv) {
 
-	clear(1, 1); //clear entire screen
-
-	MONITORINFO* monitorinfo = createMonitorInfo();
-	processArguments(monitorinfo, argc, argv);
-
 
 	clear(1, 1); //clear entire screen
 
