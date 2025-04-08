@@ -256,7 +256,6 @@ int main(int argc, char** argv) {
 			exit(1);
 		}
 
-		/*
 
 		float values[2];
 		values[0] = (float) coreinfo->coreamount;
@@ -274,7 +273,7 @@ int main(int argc, char** argv) {
 			exit(1);
 		}
 
-		*/
+		
 
 		
 
