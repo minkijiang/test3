@@ -47,6 +47,8 @@ int getmax(int x, int y, int z) {
 
 }
 
+//extra stuff i might not use
+
 
 void printsummary(int mempipe, int cpupipe, int corepipe) {
 	fd_set readfds;
@@ -101,9 +103,16 @@ void printsummary(int mempipe, int cpupipe, int corepipe) {
 	printf("Summary: \n\n Memory Usage: %.2f\n Cpu Usage: %.2f\n Core Amount: %.2f\n Maximum GHZ: %.2f\n ", memavg, cpuavg, coreamount, maxghz);
 }
 
+
+
 int main(int argc, char** argv) {
 
 	clear(1, 1); //clear entire screen
+
+	printf("fefhehfehifehifehi\n");
+
+	//char stdoutfile[MAXLENGTH];
+	//readlink("/proc/self/fd/1", stdoutfile, sizeof(path) - 1);
 
 	MONITORINFO* monitorinfo = createMonitorInfo();
 	processArguments(monitorinfo, argc, argv);
