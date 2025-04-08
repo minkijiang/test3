@@ -19,7 +19,7 @@ typedef struct CPUINFO {
 
 	*/
 
-	long long int* cpuUsageInfo;
+	long long int cpuUsageInfo[4];
 
 	GRAPHINFO* cpugraphinfo;
 
@@ -77,7 +77,6 @@ CPUINFO* createCpuinfo(int samplesize) {
 	cpuinfo->avg_usage = 0;
 
 	long long int* cinfo = getTotalCpuUsageInfo();
-	cpuinfo->cpuUsageInfo = malloc(4*sizeof(long long int));
 
 	cpuinfo->cpuUsageInfo[0] = cinfo[0];
 	cpuinfo->cpuUsageInfo[1] = cinfo[1];
