@@ -185,7 +185,7 @@ int main(int argc, char** argv) {
 
 	int samplesize = strtol(argv[1],NULL, 10);
 	int tdelay = strtol(argv[2],NULL, 10);
-	//int mempipe = strtol(argv[3],NULL, 10);
+	int mempipe = strtol(argv[3],NULL, 10);
 
 	int pipefile[2];
 
@@ -245,7 +245,7 @@ int main(int argc, char** argv) {
 			exit(1);
 		}
 
-		/*
+		
 
 		if (write(mempipe, &(meminfo->avg_usage), sizeof(float)) < 0) {
 			perror("failed to write to pipe");
@@ -258,7 +258,7 @@ int main(int argc, char** argv) {
 		}
 
 
-		*/
+		
 
 		
 	}
