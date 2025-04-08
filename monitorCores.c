@@ -202,7 +202,7 @@ int main(int argc, char** argv) {
 
 	// argc >= 2
 
-	int corepipe = strtol(argv[1], NULL, 10);
+	//int corepipe = strtol(argv[1], NULL, 10);
 
 	setSignals();
 
@@ -262,6 +262,7 @@ int main(int argc, char** argv) {
 
 		free(coreinfo);
 
+		/*
 
 		if (write(corepipe, values, 2*sizeof(float)) < 0) {
 			perror("failed to write to pipe");
@@ -272,6 +273,8 @@ int main(int argc, char** argv) {
 			perror("failed to close pipe");
 			exit(1);
 		}
+
+		*/
 
 		
 
