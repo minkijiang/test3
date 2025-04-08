@@ -3,6 +3,7 @@
 #include "draw.h"
 #include <stdbool.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 #define HEIGHT 46
 
