@@ -25,7 +25,7 @@ typedef struct CPUINFO {
 
 } CPUINFO;
 
-#define STARTHEIGHT 20
+#define STARTHEIGHT 21
 
 long long int* getTotalCpuUsageInfo() {
 	long long int* cpu_info = malloc(2*sizeof(long long int));

@@ -116,11 +116,7 @@ int main(int argc, char** argv) {
 	sprintf(tdelay, "%d", monitorinfo->tdelay);
 	sprintf(samplesize, "%d", monitorinfo->samplesize);
 
-	int pid = fork();
-
-	if (pid == 0) {
-		execl("monitorMemory", "monitorMemory", samplesize, tdelay, (char *)NULL);
-	}
+	execl("monitorMemory", "monitorMemory", samplesize, tdelay, (char *)NULL);
 
 
 
