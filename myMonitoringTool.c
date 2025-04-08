@@ -3,9 +3,7 @@
 #include "draw.h"
 #include <sys/wait.h>
 
-
 #include <unistd.h>
-
 
 #define STARTHEIGHT 3
 #define ENDHEIGHT 46
@@ -106,6 +104,14 @@ void printsummary(int mempipe, int cpupipe, int corepipe) {
 
 
 int main(int argc, char** argv) {
+
+	int pid = fork();
+
+	if (pid == 0) {
+		execl("monitorMemory", "monitorMemory", monitorinfo->samplesize, monitorinfo->tdelay);
+	}
+
+	/*
 
 	clear(1, 1); //clear entire screen
 
@@ -218,6 +224,8 @@ int main(int argc, char** argv) {
 	printsummary(mempipe[0], cpupipe[0], corepipe[0]);
 
 	free(monitorinfo);
+
+	*/
 
 	return 0;
 }
