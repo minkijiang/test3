@@ -25,9 +25,14 @@ typedef struct COREINFO {
 } COREINFO;
 
 void freeCores(CORES* cores) {
-	for (CORES* core = cores; core != NULL; core = core->next) {
-		free(core);
+	CORES* freecore = NULL;
+
+	while (cores != NULL) {
+		free(freecore);
+		freecore = cores;
+		cores = cores->next;
 	}
+
 }
 
 CORES* addCore(CORES* cores, int phy_id, int core_id) {
