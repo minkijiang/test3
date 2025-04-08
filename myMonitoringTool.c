@@ -105,19 +105,6 @@ void printsummary(int mempipe, int cpupipe, int corepipe) {
 
 int main(int argc, char** argv) {
 
-	clear(1, 1);
-
-	int pid = fork();
-
-	MONITORINFO* monitorinfo = createMonitorInfo();
-	processArguments(monitorinfo, argc, argv);
-
-	if (pid == 0) {
-		execl("monitorCores", "monitorCores", (char *)NULL);
-	}
-
-	/*
-
 	clear(1, 1); //clear entire screen
 
 	//char stdoutfile[MAXLENGTH];
@@ -152,7 +139,7 @@ int main(int argc, char** argv) {
 				exit(1);
 			}
 
-			execl("monitorMemory", "monitorMemory", monitorinfo->samplesize, monitorinfo->tdelay, mempipe[1]);
+			execl("monitorMemory", "monitorMemory", monitorinfo->samplesize, monitorinfo->tdelay, mempipe[1], (char *)NULL);
 		}
 		else if (pids[0] < 0) {
 			perror("failed to fork");
@@ -179,7 +166,7 @@ int main(int argc, char** argv) {
 				exit(1);
 			}
 
-			execl("monitorCpu", "monitorCpu", monitorinfo->samplesize, monitorinfo->tdelay, cpupipe[1]);
+			execl("monitorCpu", "monitorCpu", monitorinfo->samplesize, monitorinfo->tdelay, cpupipe[1], (char *)NULL);
 		}
 		else if (pids[1] < 0) {
 			perror("failed to fork");
@@ -205,7 +192,7 @@ int main(int argc, char** argv) {
 				exit(1);
 			}
 
-			execl("monitorCores", "monitorCores", corepipe[1]);
+			execl("monitorCores", "monitorCores", corepipe[1], (char *)NULL);
 		}
 		else if (pids[2] < 0) {
 			perror("failed to fork");
@@ -230,7 +217,6 @@ int main(int argc, char** argv) {
 
 	free(monitorinfo);
 
-	*/
 
 	return 0;
 }
