@@ -110,6 +110,18 @@ int main(int argc, char** argv) {
 	MONITORINFO* monitorinfo = createMonitorInfo();
 	processArguments(monitorinfo, argc, argv);
 
+
+	clear(1, 1); //clear entire screen
+
+	MONITORINFO* monitorinfo = createMonitorInfo();
+	processArguments(monitorinfo, argc, argv);
+
+	char tdelay[MAXLENGTH];
+	char samplesize[MAXLENGTH];
+
+	sprintf(tdelay, "%d", monitorinfo->tdelay);
+	sprintf(samplesize, "%d", monitorinfo->samplesize);
+
 	int mempipe[2];
 	int cpupipe[2];
 	int corepipe[2];
@@ -136,7 +148,10 @@ int main(int argc, char** argv) {
 				exit(1);
 			}
 
-			execl("monitorMemory", "monitorMemory", monitorinfo->samplesize, monitorinfo->tdelay, mempipe[1], (char *)NULL);
+			char pipe[MAXLENGTH];
+			sprintf(pipe, "%d", mempipe[1]);
+
+			execl("monitorMemory", "monitorMemory", samplesize, tdelay, pipe, (char *)NULL);
 		}
 		else if (pids[0] < 0) {
 			perror("failed to fork");
@@ -163,7 +178,10 @@ int main(int argc, char** argv) {
 				exit(1);
 			}
 
-			execl("monitorCpu", "monitorCpu", monitorinfo->samplesize, monitorinfo->tdelay, cpupipe[1], (char *)NULL);
+			char pipe[MAXLENGTH];
+			sprintf(pipe, "%d", cpupipe[1]);
+
+			execl("monitorCpu", "monitorCpu", samplesize, tdelay, pipe, (char *)NULL);
 		}
 		else if (pids[1] < 0) {
 			perror("failed to fork");
@@ -189,7 +207,10 @@ int main(int argc, char** argv) {
 				exit(1);
 			}
 
-			execl("monitorCores", "monitorCores", corepipe[1], (char *)NULL);
+			char pipe[MAXLENGTH];
+			sprintf(pipe, "%d", corepipe[1]);
+
+			execl("monitorCores", "monitorCores", pipe, (char *)NULL);
 		}
 		else if (pids[2] < 0) {
 			perror("failed to fork");
@@ -206,13 +227,15 @@ int main(int argc, char** argv) {
 	}
 
 	setSignals();
-	setpgid(pids[0], getpgrp());
-	setpgid(pids[1], getpgrp());
-	setpgid(pids[2], getpgrp());
+	if (pids[0] != NOTHING) setpgid(pids[0], getpgrp());
+	if (pids[1] != NOTHING) setpgid(pids[1], getpgrp());
+	if (pids[2] != NOTHING) setpgid(pids[2], getpgrp());
 
 	printsummary(mempipe[0], cpupipe[0], corepipe[0]);
 
 	free(monitorinfo);
+
+	
 
 
 	return 0;
