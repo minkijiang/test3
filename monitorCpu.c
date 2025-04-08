@@ -19,7 +19,7 @@ typedef struct CPUINFO {
 
 	*/
 
-	long long int* cpuUsageInfo[4];
+	long long int* cpuUsageInfo;
 
 	GRAPHINFO* cpugraphinfo;
 
