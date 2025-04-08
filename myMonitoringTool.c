@@ -113,7 +113,7 @@ int main(int argc, char** argv) {
 	processArguments(monitorinfo, argc, argv);
 
 	if (pid == 0) {
-		execl("monitorCores", "monitorCores");
+		execl("monitorCores", "monitorCores", (char *)NULL);
 	}
 
 	/*
