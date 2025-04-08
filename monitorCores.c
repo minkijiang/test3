@@ -103,6 +103,7 @@ int getCoreAmount() {
 		free(values);
 		values = getCore(corefile);
 	}
+	free(values);
 
 	int coreamount = 0;
 	for (CORES* core = cores; core != NULL; core = core->next) {
@@ -233,7 +234,7 @@ int main(int argc, char** argv) {
 			exit(1);
 		}
 
-		COREINFO* coreinfo;
+		COREINFO* coreinfo = malloc(sizeof(COREINFO));
 		if (read(pipefile[0], coreinfo, sizeof(coreinfo)) < 0) {
 			perror("failed to read pipe");
 			exit(1);
@@ -253,6 +254,8 @@ int main(int argc, char** argv) {
 			perror("failed to close");
 			exit(1);
 		}
+
+		free(coreinfo);
 
 		/*
 
