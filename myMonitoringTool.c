@@ -112,9 +112,6 @@ int main(int argc, char** argv) {
 	int cpupipe[2];
 	int corepipe[2];
 
-	fd_set readfds;
-	int maxfd = 0;
-
 	if (pipe(mempipe) != 0 || pipe(cpupipe) != 0 || pipe(corepipe) != 0) {
 		perror("failed to pipe");
 		exit(1);
