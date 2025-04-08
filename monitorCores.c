@@ -243,7 +243,7 @@ int main(int argc, char** argv) {
 		waitforchild();
 
 		reposition(1, 46);
-		printf("%d    %.2f", coreinfo->coreamount, coreinfo->maxghz);
+		printf("%d", getCoreAmount());
 
 		reposition(1, STARTHEIGHT);
 		displayCores(coreinfo->maxghz, coreinfo->coreamount);
@@ -287,7 +287,7 @@ int main(int argc, char** argv) {
 }
 
 
-
+//.  gcc draw.c graph.c childsignalhandler.c setsignal.c monitorCores.c 
 
 
 
