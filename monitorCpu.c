@@ -47,7 +47,7 @@ long long int* getTotalCpuUsageInfo() {
 	while (fgets(line, (MAXLENGTH-1)*sizeof(char), cpufile) != NULL) {
 		sscanf(line, "%s %lld %lld %lld %lld %lld %lld %lld", word, 
 		&user, &nice, &sys, &idle, &IOwait, &irq, &softirq);
-		if (strcmp(line, "cpu")==0) {
+		if (strcmp(word, "cpu")==0) {
 			break;
 		}
 	}
@@ -198,7 +198,6 @@ int main(int argc, char** argv) {
 			//delay(tdelay);
 			usleep(tdelay-1000);
 			long long int* cpuUsageInfo = getTotalCpuUsageInfo();
-			printf("\x1b[%d;%df %lld      %lld", 40, 1, cpuUsageInfo[0], cpuUsageInfo[1]);
 			if (write(pipefile[1], cpuUsageInfo, 2*sizeof(long long int)) < 0) {
 				perror("failed to write to pipe");
 				exit(1);
