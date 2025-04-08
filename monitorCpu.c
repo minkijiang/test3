@@ -125,7 +125,7 @@ void retrieveCpuInfo(CPUINFO* cpuinfo, int currentsample, int fd) {
 
 void plotCpuGraph(CPUINFO* cpuinfo, int currentsample) {
 	char header[MAXLENGTH];
-	sprintf(header, "CPU %.2f %", cpuinfo->avg_usage);
+	sprintf(header, "CPU %.2f %%", cpuinfo->avg_usage);
 	updateHeader(cpuinfo->cpugraphinfo, header);
 
 	plotgraph(cpuinfo->cpugraphinfo, currentsample, cpuinfo->cpu_usage, 100);
@@ -133,7 +133,7 @@ void plotCpuGraph(CPUINFO* cpuinfo, int currentsample) {
 
 void printInitialCpuGraph(CPUINFO* cpuinfo) {
 	char header[MAXLENGTH];
-	sprintf(header, "CPU %.2f %", cpuinfo->avg_usage);
+	sprintf(header, "CPU %.2f %%", cpuinfo->avg_usage);
 
 	printInitialGraph(cpuinfo->cpugraphinfo, header);
 }
