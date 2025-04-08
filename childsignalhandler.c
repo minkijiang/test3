@@ -2,8 +2,10 @@
 #include "setsignal.h"
 #include "signalhandler.h"
 #include <unistd.h>
+#include <sys/wait.h>
 
 void terminate(int signo) {
+	wait(NULL);
 	exit(0);
 }
 
@@ -22,5 +24,5 @@ void stop(int signo) {
 }
 
 void setSignals() {
-	setSignalHandlers(terminate, stop);
+	setSignalHandlers(stop, terminate);
 }

@@ -6,6 +6,9 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <sys/wait.h>
+#include <time.h>
+
+#define _DEFAULT_SOURCE
 
 
 #define KB_TO_GB 1000000
@@ -23,6 +26,8 @@ typedef struct MEMINFO {
 
 
 float getMaxMemory() {
+
+	/*
 
 	FILE* memfile = fopen("/proc/meminfo", "r");
 
@@ -51,10 +56,16 @@ float getMaxMemory() {
 
 	return (float)maxmemory/KB_TO_GB ;
 
+	*/
+
+	return 30;
+
 
 }
 
 float getMemoryUsage() {
+
+	/*
 	
 	FILE* memfile = fopen("/proc/meminfo", "r");
 
@@ -84,6 +95,10 @@ float getMemoryUsage() {
 	float maxmemory = getMaxMemory();
 
 	return maxmemory - ((float)freememory/KB_TO_GB);
+
+	*/
+
+	return 10;
 
 
 }
@@ -193,7 +208,6 @@ int main(int argc, char** argv) {
 
 	int pid = fork();
 
-
 	if (pid == 0) {
 
 		if (close(pipefile[0]) != 0) {
@@ -203,7 +217,7 @@ int main(int argc, char** argv) {
 
 		printInitialMemoryGraph(meminfo);
 		for (int sample = 0; sample < samplesize; sample++) {
-			delay(tdelay);
+			usleep(tdelay-1000);
 			float memusage = getMemoryUsage();
 			if (write(pipefile[1], &memusage, sizeof(float)) < 0) {
 				perror("failed to write to pipe");
@@ -219,6 +233,8 @@ int main(int argc, char** argv) {
 
 	}
 	else if (pid > 0) {
+
+		setpgid(pid, getpgrp());
 
 
 		if (close(pipefile[1]) != 0) {

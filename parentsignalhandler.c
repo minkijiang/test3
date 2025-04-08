@@ -79,5 +79,5 @@ void stop(int signo) {
 }
 
 void setSignals() {
-	setSignalHandlers(terminate, stop);
+	setSignalHandlers(stop, terminate);
 }
