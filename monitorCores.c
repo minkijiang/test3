@@ -202,7 +202,7 @@ int main(int argc, char** argv) {
 
 	// argc >= 2
 
-	//int corepipe = strtol(argv[1], NULL, 10);
+	int corepipe = strtol(argv[1], NULL, 10);
 
 	setSignals();
 
@@ -257,8 +257,6 @@ int main(int argc, char** argv) {
 		}
 
 
-		/*
-
 		float values[2];
 		values[0] = (float) coreinfo->coreamount;
 		values[1] = coreinfo->maxghz;
@@ -273,7 +271,7 @@ int main(int argc, char** argv) {
 			exit(1);
 		}
 
-		*/
+		
 
 		free(coreinfo);
 
