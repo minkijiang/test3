@@ -113,8 +113,6 @@ void retrieveCpuInfo(CPUINFO* cpuinfo, int currentsample, int fd) {
 	cpuinfo->cpuUsageInfo[2] = cpuinfos[0];
 	cpuinfo->cpuUsageInfo[3] = cpuinfos[1];
 
-	free(cpuinfo);
-
 	float runtime = (float) (cpuinfo->cpuUsageInfo[2] - cpuinfo->cpuUsageInfo[0]);
 	float idletime = (float) (cpuinfo->cpuUsageInfo[3] - cpuinfo->cpuUsageInfo[1]);
 	float percent = ((runtime-idletime) / runtime)*100;
@@ -205,7 +203,7 @@ int main(int argc, char** argv) {
 				perror("failed to write to pipe");
 				exit(1);
 			}
-			//free(cpuUsageInfo);
+			free(cpuUsageInfo);
 
 		}
 
