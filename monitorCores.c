@@ -202,7 +202,7 @@ int main(int argc, char** argv) {
 
 	// argc >= 2
 
-	//int corepipe = strtol(argv[1], NULL, 10);
+	int corepipe = strtol(argv[1], NULL, 10);
 
 	setSignals();
 
