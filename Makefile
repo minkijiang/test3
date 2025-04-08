@@ -1,4 +1,4 @@
-CFLAGS = --std=c99 -Wall -Werror -D_GNU_SOURCE
+CFLAGS = --std=c99 -Wall -Werror #-D_GNU_SOURCE
 LDFLAGS = -lm -lc
 CC = gcc
 MONITORFUNCTIONS = monitorMemory monitorCpu monitorCores 
