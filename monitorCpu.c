@@ -117,7 +117,7 @@ void retrieveCpuInfo(CPUINFO* cpuinfo, int currentsample, int fd) {
 	float idletime = (float) (cpuinfo->cpuUsageInfo[3] - cpuinfo->cpuUsageInfo[1]);
 	float percent = ((runtime-idletime) / runtime)*100;
 
-	printf("\x1b[%d;%df %.2f      %.2f", 40, 1, cpuinfos[0], cpuinfos[1]);
+	printf("\x1b[%d;%df %lld      %lld", 40, 1, cpuinfos[0], cpuinfos[1]);
 
 	cpuinfo->cpu_usage = percent;
 	cpuinfo->cpugraphinfo->values[currentsample-1] = percent;
