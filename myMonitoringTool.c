@@ -1,6 +1,7 @@
 #include "getArguments.h"
 #include "signalhandler.h"
 #include "draw.h"
+#include <sys/wait.h>
 
 
 #include <unistd.h>
