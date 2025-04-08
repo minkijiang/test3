@@ -97,7 +97,6 @@ CPUINFO* createCpuinfo(int samplesize) {
 
 void freecpuinfo(CPUINFO* cpuinfo) {
 	freeGraph(cpuinfo->cpugraphinfo);
-	free(cpuinfo->cpuUsageInfo);
 	free(cpuinfo);
 }
 
