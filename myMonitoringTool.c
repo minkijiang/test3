@@ -109,8 +109,6 @@ int main(int argc, char** argv) {
 
 	clear(1, 1); //clear entire screen
 
-	printf("fefhehfehifehifehi\n");
-
 	//char stdoutfile[MAXLENGTH];
 	//readlink("/proc/self/fd/1", stdoutfile, sizeof(path) - 1);
 
