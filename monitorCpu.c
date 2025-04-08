@@ -55,8 +55,7 @@ long long int* getTotalCpuUsageInfo() {
 	cpu_info[0] = user+nice+sys+idle+IOwait+irq+softirq;
 	cpu_info[1] = idle;
 
-	int isClosed = fclose(cpufile);
-	if (isClosed != 0) {
+	if (fclose(cpufile) != 0) {
 		perror("failed to close /proc/stat");
 		exit(1);
 	}
@@ -116,8 +115,6 @@ void retrieveCpuInfo(CPUINFO* cpuinfo, int currentsample, int fd) {
 	float runtime = (float) (cpuinfo->cpuUsageInfo[2] - cpuinfo->cpuUsageInfo[0]);
 	float idletime = (float) (cpuinfo->cpuUsageInfo[3] - cpuinfo->cpuUsageInfo[1]);
 	float percent = ((runtime-idletime) / runtime)*100;
-
-	printf("\x1b[%d;%df %lld      %lld", 40, 1, cpuinfos[0], cpuinfos[1]);
 
 	cpuinfo->cpu_usage = percent;
 	cpuinfo->cpugraphinfo->values[currentsample-1] = percent;
@@ -201,6 +198,7 @@ int main(int argc, char** argv) {
 			//delay(tdelay);
 			usleep(tdelay-1000);
 			long long int* cpuUsageInfo = getTotalCpuUsageInfo();
+			printf("\x1b[%d;%df %lld      %lld", 40, 1, cpuUsageInfo[0], cpuUsageInfo[1]);
 			if (write(pipefile[1], cpuUsageInfo, 2*sizeof(long long int)) < 0) {
 				perror("failed to write to pipe");
 				exit(1);
