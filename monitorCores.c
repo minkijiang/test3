@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 #define STARTHEIGHT 33
 #define MAXLENGTH 1024

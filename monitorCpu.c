@@ -3,6 +3,7 @@
 
 #include <unistd.h>
 #include <string.h>
+#include <sys/wait.h>
 
 
 typedef struct CPUINFO {
@@ -18,7 +19,7 @@ typedef struct CPUINFO {
 
 	*/
 
-	long long int cpuUsageInfo[4];
+	long long int* cpuUsageInfo[4];
 
 	GRAPHINFO* cpugraphinfo;
 
@@ -76,10 +77,14 @@ CPUINFO* createCpuinfo(int samplesize) {
 	cpuinfo->avg_usage = 0;
 
 	long long int* cinfo = getTotalCpuUsageInfo();
+	cpuinfo->cpuUsageInfo = malloc(4*sizeof(long long int));
+
 	cpuinfo->cpuUsageInfo[0] = cinfo[0];
 	cpuinfo->cpuUsageInfo[1] = cinfo[1];
 	cpuinfo->cpuUsageInfo[2] = cinfo[0];
 	cpuinfo->cpuUsageInfo[3] = cinfo[1];
+
+	free(cinfo);
 
 	char memtop[MAXLENGTH];
 	char membottem[MAXLENGTH];
@@ -202,6 +207,7 @@ int main(int argc, char** argv) {
 				perror("failed to write to pipe");
 				exit(1);
 			}
+			free(cpuUsageInfo);
 
 		}
 
@@ -255,3 +261,9 @@ int main(int argc, char** argv) {
 
 	return 0;
 }
+
+//.  gcc draw.c graph.c childsignalhandler.c setsignal.c monitorCpu.c 
+
+
+
+
