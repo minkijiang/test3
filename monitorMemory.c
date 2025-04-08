@@ -8,7 +8,6 @@
 #include <sys/wait.h>
 #include <time.h>
 
-#define _DEFAULT_SOURCE
 
 
 #define KB_TO_GB 1000000
