@@ -242,8 +242,12 @@ int main(int argc, char** argv) {
 
 		waitforchild();
 
+		reposition(1, 46);
+		printf("%d    %.2f", coreinfo->coreamount, coreinfo->maxghz);
+
 		reposition(1, STARTHEIGHT);
 		displayCores(coreinfo->maxghz, coreinfo->coreamount);
+		reloaddisplay();
 
 		float values[2];
 		values[0] = (float) coreinfo->coreamount;
