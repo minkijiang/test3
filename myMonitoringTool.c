@@ -105,7 +105,12 @@ void printsummary(int mempipe, int cpupipe, int corepipe) {
 
 int main(int argc, char** argv) {
 
+	clear(1, 1);
+
 	int pid = fork();
+
+	MONITORINFO* monitorinfo = createMonitorInfo();
+	processArguments(monitorinfo, argc, argv);
 
 	if (pid == 0) {
 		execl("monitorMemory", "monitorMemory", monitorinfo->samplesize, monitorinfo->tdelay);
