@@ -250,19 +250,18 @@ int main(int argc, char** argv) {
 		displayCores(coreinfo->maxghz, coreinfo->coreamount);
 		reloaddisplay();
 
-		float values[2];
-		values[0] = (float) coreinfo->coreamount;
-		values[1] = coreinfo->maxghz;
-
 
 		if (close(pipefile[0]) != 0) {
 			perror("failed to close");
 			exit(1);
 		}
 
-		free(coreinfo);
 
 		/*
+
+		float values[2];
+		values[0] = (float) coreinfo->coreamount;
+		values[1] = coreinfo->maxghz;
 
 		if (write(corepipe, values, 2*sizeof(float)) < 0) {
 			perror("failed to write to pipe");
@@ -275,6 +274,8 @@ int main(int argc, char** argv) {
 		}
 
 		*/
+
+		free(coreinfo);
 
 		
 
