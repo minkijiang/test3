@@ -105,6 +105,27 @@ void printsummary(int mempipe, int cpupipe, int corepipe) {
 
 int main(int argc, char** argv) {
 
+	clear(1, 1); //clear entire screen
+
+	MONITORINFO* monitorinfo = createMonitorInfo();
+	processArguments(monitorinfo, argc, argv);
+
+	char tdelay[MAXLENGTH];
+	char samplesize[MAXLENGTH];
+
+	sprintf(tdelay, "%d", monitorinfo->tdelay);
+	sprintf(samplesize, "%d", monitorinfo->samplesize);
+
+	int pid = fork();
+
+	if (pid == 0) {
+		execl("monitorMemory", "monitorMemory", samplesize, tdelay, (char *)NULL);
+	}
+
+
+
+	/*
+
 
 	clear(1, 1); //clear entire screen
 
@@ -229,6 +250,8 @@ int main(int argc, char** argv) {
 	printsummary(mempipe[0], cpupipe[0], corepipe[0]);
 
 	free(monitorinfo);
+
+	*/
 
 	
 
