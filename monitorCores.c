@@ -103,7 +103,6 @@ int getCoreAmount() {
 		free(values);
 		values = getCore(corefile);
 	}
-	free(values);
 
 	int coreamount = 0;
 	for (CORES* core = cores; core != NULL; core = core->next) {
@@ -200,6 +199,9 @@ int main(int argc, char** argv) {
 
 	//int corepipe = strtol(argv[1], NULL, 10);
 
+	reposition(1, 46);
+	printf("%d", getCoreAmount());
+
 	setSignals();
 
 	int pipefile[2];
@@ -241,9 +243,6 @@ int main(int argc, char** argv) {
 		}
 
 		waitforchild();
-
-		reposition(1, 46);
-		printf("%d", getCoreAmount());
 
 		reposition(1, STARTHEIGHT);
 		displayCores(coreinfo->maxghz, coreinfo->coreamount);
