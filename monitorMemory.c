@@ -26,7 +26,7 @@ typedef struct MEMINFO {
 
 float getMaxMemory() {
 
-	/*
+	
 
 	FILE* memfile = fopen("/proc/meminfo", "r");
 
@@ -55,16 +55,11 @@ float getMaxMemory() {
 
 	return (float)maxmemory/KB_TO_GB ;
 
-	*/
-
-	return 30;
-
 
 }
 
 float getMemoryUsage() {
 
-	/*
 	
 	FILE* memfile = fopen("/proc/meminfo", "r");
 
@@ -95,9 +90,6 @@ float getMemoryUsage() {
 
 	return maxmemory - ((float)freememory/KB_TO_GB);
 
-	*/
-
-	return 10;
 
 
 }

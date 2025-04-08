@@ -173,7 +173,7 @@ int main(int argc, char** argv) {
 
 	int samplesize = strtol(argv[1],NULL, 10);
 	int tdelay = strtol(argv[2],NULL, 10);
-	int cpupipe = strtol(argv[3],NULL, 10);
+	//int cpupipe = strtol(argv[3],NULL, 10);
 
 	int pipefile[2];
 
@@ -195,7 +195,8 @@ int main(int argc, char** argv) {
 		printInitialCpuGraph(cpuinfo);
 
 		for (int sample = 0; sample < samplesize; sample++) {
-			delay(tdelay);
+			//delay(tdelay);
+			usleep(tdelay-1000);
 			long long int* cpuUsageInfo = getTotalCpuUsageInfo();
 			if (write(pipefile[1], cpuUsageInfo, 2*sizeof(long long int)) < 0) {
 				perror("failed to write to pipe");
@@ -230,6 +231,8 @@ int main(int argc, char** argv) {
 			exit(1);
 		}
 
+		/*
+
 		if (write(cpupipe, &(cpuinfo->avg_usage), sizeof(float)) < 0) {
 			perror("failed to write to pipe");
 			exit(1);
@@ -238,6 +241,8 @@ int main(int argc, char** argv) {
 			perror("failed to close pipe");
 			exit(1);
 		}
+
+		*/
 		
 	}
 	else {

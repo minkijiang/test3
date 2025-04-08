@@ -1,6 +1,6 @@
 #include "draw.h"
 
-#define ENDHEIGHT 46
+#define ENDHEIGHT 56
 
 void reloaddisplay() {
 	printf("\x1b[%d;%df\n", ENDHEIGHT, 1);
